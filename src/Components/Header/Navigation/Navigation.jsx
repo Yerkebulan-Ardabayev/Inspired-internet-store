@@ -5,7 +5,7 @@ import { Gender } from './Gender/Gender';
 import { useEffect } from 'react';
 import { useLocation } from 'react-router-dom';
 import { setActiveGender } from '../../../Features/navigationSlice';
-// import s from './Navigation.module.scss';
+
 
 export const Navigation = () => {
   const dispatch = useDispatch();
