@@ -1,0 +1,6 @@
+{
+  "routes": [
+    { "handel": "filesystem" },
+    { "src": "/.*", "dest": "/index.html" }
+  ]
+}
