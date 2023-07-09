@@ -1,7 +1,7 @@
 import { Outlet } from "react-router-dom"
-import { Header } from "../Componets/Header/Header"
-import { Main } from "../Componets/Layout/Main/Main"
-import { Footer } from "../Componets/Footer/Footer"
+import { Header } from "../Components/Header/Header"
+import { Main } from "../Components/Layout/Main/Main"
+import { Footer } from "../Components/Footer/Footer"
 
 const list = [
   {
@@ -31,7 +31,7 @@ const list = [
 export const Root = () => {
   return (
     <>
-      <Header list={list/>
+      <Header list={list} />
       <Main>
         <Outlet/>
       </Main>

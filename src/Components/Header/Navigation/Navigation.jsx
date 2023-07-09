@@ -4,6 +4,7 @@ import { Gender } from './Gender/Gender';
 // import s from './Navigation.module.scss';
 
 export const Navigation = ({list}) => {
+  
   return (
     <nav>
       <Container>

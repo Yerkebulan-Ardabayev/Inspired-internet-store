@@ -3,9 +3,9 @@ import { Container } from '../Layout/Container/Container';
 import s from './Footer.module.scss';
 import { NavLink } from 'react-router-dom';
 
-export const Footer = ({list}) => {
+export const Footer = ({ list }) => {
   return (
-    <Footer>
+    <footer>
       <Container>
         <div className={s.container}>
           <div className={s.category}>
@@ -78,16 +78,20 @@ export const Footer = ({list}) => {
             <ul className={s.developmentList}>
               <li className={s.developmentItem}>
                 Designer:
-                <a className={s.link} href="https://t.me/Mrshmalloww">Anastasia Ilina</a>
+                <a className={s.link} href='https://t.me/Mrshmalloww'>
+                  Anastasia Ilina
+                </a>
               </li>
               <li className={s.developmentItem}>
                 Developer:
-                <a className={s.link} href="https://t.me/Mrshmalloww">Anastasia Ilina</a>
+                <a className={s.link} href='https://t.me/Mrshmalloww'>
+                  Anastasia Ilina
+                </a>
               </li>
             </ul>
           </div>
         </div>
       </Container>
-    </Footer>
+    </footer>
   );
 };

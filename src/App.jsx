@@ -4,9 +4,9 @@ import {
   createBrowserRouter,
   createRoutesFromElements,
 } from 'react-router-dom';
-import { ErrorPage } from './Componets/ErrorPage/ErrorPage';
 import { Root } from './Routes/Root';
-import { MainPage } from './Componets/MainPage/MainPage';
+import { MainPage } from './Components/MainPage/MainPage';
+import { ErrorPage } from './Components/ErrorPage/ErrorPage';
 
 const router = createBrowserRouter(
   createRoutesFromElements(

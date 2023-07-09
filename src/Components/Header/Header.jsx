@@ -6,7 +6,7 @@ export const Header = ({list}) => {
   return (
     <header>
       <Top />
-      <Navigation list={list/>
+      <Navigation list={list} />
     </header>
   )
 }
