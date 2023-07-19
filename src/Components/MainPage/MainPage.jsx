@@ -5,6 +5,7 @@ import { useParams } from 'react-router-dom';
 import { setActiveGender } from '../../Features/navigationSlice';
 import { Banner } from '../Banner/Banner';
 import { Goods } from '../Goods/Goods';
+import { usePageFromSearchParams } from '../../hooks/usePageFromSearchParams';
 
 export const MainPage = () => {
   const { category, gender } = useParams();
@@ -12,6 +13,7 @@ export const MainPage = () => {
   const { activeGender, categories, genderList } = useSelector((state) => state.navigation);
   const genderData = categories[activeGender];
   const categoryData = genderData?.list?.find((item) => item.slug === category);
+  const page = usePageFromSearchParams(dispatch);
 
   useEffect(() => {
     if (gender) {
@@ -25,14 +27,18 @@ export const MainPage = () => {
 
   useEffect(() => {
     if (gender && category) {
-      dispatch(fetchCategory({ category, gender }));
+      const params = { category, gender };
+      if (page) {
+        params.page = page;
+      }
+      dispatch(fetchCategory(params));
       return;
     }
     if (gender) {
       dispatch(fetchGender(gender));
       return;
     }
-  }, [gender, category, dispatch]);
+  }, [gender, category, page, dispatch]);
 
   return (
     <>
