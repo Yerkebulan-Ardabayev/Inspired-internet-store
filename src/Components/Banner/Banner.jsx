@@ -3,31 +3,31 @@ import { Container } from '../Layout/Container/Container';
 import { API_URL } from '../../const';
 import { useMedia } from 'react-use';
 import s from './Banner.module.scss';
-import { useEffect } from 'react';
+import { useEffect, useState } from 'react';
 
-export const Banner = ({...data}) => {
+export const Banner = ({data}) => {
   const isMobile = useMedia('(max-width: 540px)');
   const isTablet = useMedia('(max-width: 768px)');
   const isLaptop = useMedia('(max-width: 1024px)');
+  const [bgUrl, setBgUrL] = useState('');
 
   useEffect(() => {
     if (isMobile) {
-      return {backgroundImage: `url(${API_URL}${data.bg.mob})`};
+      setBgUrL(`${API_URL}${data?.bg.mobile}`);
     } else if (isTablet) {
-      return {backgroundImage: `url(${API_URL}${data.bg.tablet})`};
+      setBgUrL(`${API_URL}${data?.bg.tablet}`);
     } else if (isLaptop) {
-      return { backgroundImage: `url(${API_URL}${data.bg.laptop})` };
+      setBgUrL(`${API_URL}${data?.bg.laptop}`);
     } else {
-      return { backgroundImage: `url(${API_URL}${data.bg.desktop})` };
+      setBgUrL(`${API_URL}${data?.bg.desktop}`);
     }
-
-}, [isMobile, isTablet, isLaptop]);
+}, [isMobile, isTablet, isLaptop, data]);
 
   return (
     data && (
       <section
         className={s.banner}
-        style={{ backgroundImage: `url(${API_URL}${data.bg.desktop})` }}>
+        style={{ backgroundImage: `url(${bgUrl})` }}>
         <Container>
           <div className={s.content}>
             <h2 className={s.title}>{data.description}</h2>
