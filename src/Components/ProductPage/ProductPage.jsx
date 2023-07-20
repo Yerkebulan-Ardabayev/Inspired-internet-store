@@ -12,15 +12,17 @@ import { Count } from '../Count/Count';
 import { Goods } from '../Goods/Goods';
 import { fetchCategory } from '../../Features/goodsSlice';
 import { BtnLike } from '../BtnLike/BtnLike';
+import { addToCart } from '../../Features/cartSlice';
 
 export const ProductPage = () => {
   const dispatch = useDispatch();
   const { id } = useParams();
-  const { product } = useSelector((state) => state.product);
-  const { gender, category } = product;
+  const { product} = useSelector((state) => state.product);
+  const { gender, category, colors } = product;
   const [selectedColor, setSelectedColor] = useState('');
   const [count, setCount] = useState(1);
   const [selectedSize, setSelectedSize] = useState('');
+  const { colorList } = useSelector((state) => state.color);
 
   const handleColorChange = (e) => {
     setSelectedColor(e.target.value);
@@ -50,6 +52,12 @@ export const ProductPage = () => {
     );
   }, [gender, category, id, dispatch]);
 
+  useEffect(() => {
+    if (colorList?.length && colors?.length) {
+      setSelectedColor(colorList.find(color=> color.id === colors[0]).title)
+    }
+  }, [colorList, colors])
+
   return (
     <>
       <section className={s.card}>
@@ -59,7 +67,19 @@ export const ProductPage = () => {
             src={`${API_URL}${product.pic}`}
             alt={`${product.title}`}
           />
-          <form className={s.content}>
+          <form
+            className={s.content}
+            onSubmit={(e) => {
+              e.preventDefault();
+              dispatch(
+                addToCart({
+                  id,
+                  color: selectedColor,
+                  size: selectedSize,
+                  count,
+                })
+              );
+            }}>
             <h2 className={s.title}>{product.title}</h2>
             <p className={s.price}>тенге {product.price}</p>
             <div className={s.vendorCode}>
@@ -71,7 +91,7 @@ export const ProductPage = () => {
               <ColorList
                 selectedColor={selectedColor}
                 handleColorChange={handleColorChange}
-                colors={product.colors}
+                colors={colors}
               />
             </div>
             <ProductSize
