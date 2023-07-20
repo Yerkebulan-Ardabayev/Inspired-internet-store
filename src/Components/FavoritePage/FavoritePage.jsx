@@ -11,11 +11,11 @@ export const FavoritePage = () => {
   
   useEffect(() => {
     if (favorites) {
-      const param = { list: favorites }
+      const params = { list: favorites }
       if (page) {
-        param.page - page;
+        params.page = page;
       }
-      dispatch(fetchCategory(param));
+      dispatch(fetchCategory(params));
     }
   }, [dispatch, page, favorites]);
 
