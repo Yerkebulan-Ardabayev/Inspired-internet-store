@@ -3,7 +3,7 @@ import s from './CartItem.module.scss';
 import { API_URL } from '../../../../const';
 import cn from 'classnames';
 import { Count } from '../../../Count/Count';
-import { addToCart } from '../../../../Features/cartSlice';
+import { addToCart, removeFromCart } from '../../../../Features/cartSlice';
 
 export const CartItem = ({ id, color, size, count, goodsList }) => {
   const { colorList } = useSelector((state) => state.color);
@@ -12,6 +12,10 @@ export const CartItem = ({ id, color, size, count, goodsList }) => {
 
   const handleCountChange = (count) => {
     dispatch(addToCart({ id, size, color, count }));
+  };
+
+  const handleRemoveItem = () => {
+    dispatch(removeFromCart({ id, size, color }));
   };
 
   return (
@@ -46,7 +50,7 @@ export const CartItem = ({ id, color, size, count, goodsList }) => {
         </div>
       </div>
 
-      <button className={s.del} aria-label='Удалить товар из корзины'></button>
+      <button onClick={handleRemoveItem} className={s.del} aria-label='Удалить товар из корзины'></button>
       <Count
         className={s.count}
         count={count}
