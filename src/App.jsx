@@ -14,7 +14,7 @@ import { fetchColors } from './Features/colorSlice';
 import { ProductPage } from './Components/ProductPage/ProductPage';
 import { FavoritePage } from './Components/FavoritePage/FavoritePage';
 import { CartPage } from './Components/CartPage/CartPage';
-
+import { SearchPage } from './Components/SearchPage/SearchPAge';
 
 const router = createBrowserRouter(
   createRoutesFromElements(
@@ -24,6 +24,7 @@ const router = createBrowserRouter(
       <Route path='/cart' element={<CartPage />} />
       <Route path='/product/:id' element={<ProductPage />} />
       <Route path='/catalog/:gender/:category?' element={<MainPage />} />
+      <Route path='/search' element={<SearchPage />} />
       <Route path='*' element={<ErrorPage />} />
     </Route>
   )
@@ -34,10 +35,8 @@ export const App = () => {
 
   useEffect(() => {
     dispatch(fetchNavigation());
-    dispatch(fetchColors())
-  }, [dispatch])
+    dispatch(fetchColors());
+  }, [dispatch]);
 
-  return (
-    <RouterProvider router={router}></RouterProvider>
-  )
-}
+  return <RouterProvider router={router}></RouterProvider>;
+};
