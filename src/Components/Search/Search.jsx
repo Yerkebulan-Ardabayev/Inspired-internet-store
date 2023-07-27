@@ -15,7 +15,7 @@ export const Search = () => {
   };
 
   const validationSchema = Yup.object({
-    search: Yup.string().required('Поле обязательное для заполнения'),
+    search: Yup.string().required('Поле обязательно для заполнения'),
   });
 
   const navigate = useNavigate();
