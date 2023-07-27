@@ -17,7 +17,7 @@ import { addToCart } from '../../Features/cartSlice';
 export const ProductPage = () => {
   const dispatch = useDispatch();
   const { id } = useParams();
-  const { product} = useSelector((state) => state.product);
+  const { product } = useSelector((state) => state.product);
   const { gender, category, colors } = product;
   const [selectedColor, setSelectedColor] = useState('');
   const [count, setCount] = useState(1);
@@ -54,9 +54,9 @@ export const ProductPage = () => {
 
   useEffect(() => {
     if (colorList?.length && colors?.length) {
-      setSelectedColor(colorList.find(color=> color.id === colors[0]).title)
+      setSelectedColor(colorList.find((color) => color.id === colors[0]).title);
     }
-  }, [colorList, colors])
+  }, [colorList, colors]);
 
   return (
     <>
@@ -65,7 +65,7 @@ export const ProductPage = () => {
           <img
             className={s.image}
             src={`${API_URL}${product.pic}`}
-            alt={`${product.title}`}
+            alt={`${product.title} ${product.description}`}
           />
           <form
             className={s.content}

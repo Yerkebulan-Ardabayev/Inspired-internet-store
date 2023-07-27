@@ -8,7 +8,7 @@ import { sendOrder } from '../../../Features/cartSlice';
 
 export const Order = ({ cartItems }) => {
   const dispatch = useDispatch();
-  const handleSummitOrder = (values) => {
+  const handleSubmitOrder = (values) => {
     dispatch(sendOrder({ order: cartItems, values }));
   };
 
@@ -45,7 +45,7 @@ export const Order = ({ cartItems }) => {
             email: '',
             delivery: '',
           }}
-          onSubmit={handleSummitOrder}
+          onSubmit={handleSubmitOrder}
           validationSchema={validationSchema}>
           <Form className={s.form}>
             <fieldset className={s.personal}>

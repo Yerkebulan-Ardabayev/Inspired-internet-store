@@ -4,12 +4,10 @@ import s from './OrderModal.module.scss';
 import { clearCart } from '../../../Features/cartSlice';
 
 export const OrderModal = () => {
-  const {
-    order: {
-      order: { values, order, id, totalPrice },
-    },
-    goods: { goodList },
-  } = useSelector((state) => state);
+  const { order: {
+       values, order, id, totalPrice 
+  } } = useSelector((state) => state.cart);
+  const {goodsList} = useSelector(state=>state.goods)
   const dispatch = useDispatch();
 
   const handleCloseModal = () => {
@@ -58,7 +56,7 @@ export const OrderModal = () => {
 
         <ul className={s.goods}>
           {order.map((item) => {
-            const product = goodList.find((product) => product.id === item.id);
+            const product = goodsList.find((product) => product.id === item.id);
             return (
               <li
                 className={s.goodsItem}
