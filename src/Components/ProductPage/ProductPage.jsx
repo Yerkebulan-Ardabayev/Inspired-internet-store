@@ -13,6 +13,7 @@ import { Goods } from '../Goods/Goods';
 import { fetchCategory } from '../../Features/goodsSlice';
 import { BtnLike } from '../BtnLike/BtnLike';
 import { addToCart } from '../../Features/cartSlice';
+import { Img } from '../Img/Img';
 
 export const ProductPage = () => {
   const dispatch = useDispatch();
@@ -62,7 +63,7 @@ export const ProductPage = () => {
     <>
       <section className={s.card}>
         <Container className={s.container}>
-          <img
+          <Img
             className={s.image}
             src={`${API_URL}${product.pic}`}
             alt={`${product.title} ${product.description}`}
