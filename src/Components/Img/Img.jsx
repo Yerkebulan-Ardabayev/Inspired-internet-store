@@ -1,9 +1,11 @@
 import { useEffect, useState } from 'react';
 import preloadImg from './preloadImage.gif';
 
+// const resWithoutProblem = response.setHeader('Access-Control-Allow-Origin', '*');
+
 export const Img = ({ className, src, alt }) => {
   const [url, setUrl] = useState(preloadImg);
-
+  
   useEffect(() => {
     fetch(src)
       .then((response) => response.blob())
